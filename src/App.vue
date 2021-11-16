@@ -1,19 +1,17 @@
 <template>
   <div id="app">
-    <h2>Hi there</h2>
-    <p>{{ products }}</p>
+    <h1>Каталог товаров</h1>
+    <product-list />
   </div>
 </template>
 
 <script>
+import ProductList from './components/ProductList.vue';
+
 export default {
   name: 'App',
-  components: {},
-  methods: {},
-  computed: {
-    products() {
-      return this.$store.state.products;
-    },
+  components: {
+    ProductList,
   },
   created() {
     this.$store.dispatch('fetchProducts');
@@ -28,12 +26,6 @@ export default {
   background-color: #fafafa;
   padding: 24px;
   box-sizing: border-box;
-}
-
-html,
-body,
-#app {
-  height: 100%;
 }
 
 * {
