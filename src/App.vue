@@ -1,11 +1,19 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <h2>Hi there</h2>
+    <p>{{ someProp }}</p>
+  </div>
 </template>
 
 <script>
 export default {
   name: 'App',
   components: {},
+  computed: {
+    someProp() {
+      return this.$store.state.someProp;
+    },
+  },
 };
 </script>
 
