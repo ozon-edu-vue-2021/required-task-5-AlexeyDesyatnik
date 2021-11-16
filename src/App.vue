@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h2>Hi there</h2>
-    <p>{{ someProp }}</p>
+    <p>{{ products }}</p>
   </div>
 </template>
 
@@ -9,10 +9,14 @@
 export default {
   name: 'App',
   components: {},
+  methods: {},
   computed: {
-    someProp() {
-      return this.$store.state.someProp;
+    products() {
+      return this.$store.state.products;
     },
+  },
+  created() {
+    this.$store.dispatch('fetchProducts');
   },
 };
 </script>
