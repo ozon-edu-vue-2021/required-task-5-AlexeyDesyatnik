@@ -27,6 +27,12 @@ export default new Vuex.Store({
       })),
 
     isCartEmpty: (_, getters) => getters.productsInCart?.length === 0 ?? 0,
+
+    cartTotal: (_, getters) =>
+      getters.productsInCart.reduce(
+        (total, product) => total + product.price * product.quantity,
+        0
+      ),
   },
 
   mutations: {

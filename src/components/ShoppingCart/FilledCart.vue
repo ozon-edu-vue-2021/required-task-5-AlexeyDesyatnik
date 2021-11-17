@@ -8,6 +8,7 @@
         :product="product"
       />
     </div>
+    <p>Стоимость заказа: {{ cartTotal }} руб.</p>
     <button @click="checkout">Оформить заказ</button>
   </div>
 </template>
@@ -21,7 +22,7 @@ export default {
     CartItem,
   },
   computed: {
-    ...mapGetters(['productsInCart', 'productQuantity']),
+    ...mapGetters(['productsInCart', 'productQuantity', 'cartTotal']),
   },
   methods: {
     checkout() {
