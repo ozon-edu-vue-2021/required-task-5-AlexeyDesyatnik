@@ -1,5 +1,7 @@
 <template>
-  <h2>Здесь будет корзина</h2>
+  <div>
+    {{ this.$store.state.shoppingCart }}
+  </div>
 </template>
 
 <script>
