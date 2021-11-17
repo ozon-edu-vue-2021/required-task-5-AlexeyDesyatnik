@@ -1,18 +1,23 @@
 <template>
   <div id="app">
-    <h1>Каталог товаров</h1>
-    <product-list />
+    <h1>Интернет-магазин</h1>
+    <nav>
+      <ul>
+        <li>
+          <router-link to="/">Каталог</router-link>
+        </li>
+        <li>
+          <router-link to="/cart">Корзина</router-link>
+        </li>
+      </ul>
+    </nav>
+    <router-view />
   </div>
 </template>
 
 <script>
-import ProductList from './components/ProductList.vue';
-
 export default {
   name: 'App',
-  components: {
-    ProductList,
-  },
   created() {
     this.$store.dispatch('fetchProducts');
   },
