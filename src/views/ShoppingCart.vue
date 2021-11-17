@@ -1,20 +1,22 @@
 <template>
   <div id="shoppingCart">
-    <p>{{ this.$store.state.shoppingCart }}</p>
-    <empty-cart />
+    <empty-cart v-if="isCartEmpty" />
+    <filled-cart v-else />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import EmptyCart from '../components/ShoppingCart/EmptyCart.vue';
+import FilledCart from '../components/ShoppingCart/FilledCart.vue';
 
 export default {
   components: {
     EmptyCart,
+    FilledCart,
   },
   computed: {
-    ...mapGetters(['productsInCart']),
+    ...mapGetters(['isCartEmpty']),
   },
 };
 </script>

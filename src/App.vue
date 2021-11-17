@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Интернет-магазин</h1>
     <nav>
-      <ul>
+      <ul id="shopNavigation">
         <li>
           <router-link to="/">Каталог</router-link>
         </li>
@@ -35,5 +35,14 @@ export default {
 
 * {
   box-sizing: border-box;
+}
+
+#shopNavigation {
+  list-style-type: none;
+}
+
+#shopNavigation li {
+  display: inline-block;
+  margin: 0px 5px;
 }
 </style>

@@ -11,20 +11,26 @@ export default new Vuex.Store({
     products: [],
     shoppingCart: {},
   }),
+
   getters: {
     productQuantity: (state) => (id) => state.shoppingCart[id] ?? 0,
+
     isProductInCart: (_, getters) => (id) => getters.productQuantity(id) > 0,
-    productsInCart: (state) =>
-      Object.keys(state.shoppingCart).map((cartProduct) => {
-        return state.products.find((product) => product.id === cartProduct.id);
-      }),
+
     product: (state) => (id) =>
-      state.products.find((product) => product.id === id),
+      state.products.find((product) => product.id == id),
+
+    productsInCart: (state, getters) =>
+      Object.keys(state.shoppingCart).map((id) => getters.product(id)),
+
+    isCartEmpty: (_, getters) => getters.productsInCart?.length === 0 ?? 0,
   },
+
   mutations: {
     setProducts(state, newProducts) {
       state.products = newProducts;
     },
+
     setProductQuantity(state, { id, quantity }) {
       if (quantity > 0) {
         Vue.set(state.shoppingCart, id, quantity);
@@ -33,6 +39,7 @@ export default new Vuex.Store({
       }
     },
   },
+
   actions: {
     async fetchProducts(context) {
       const response = await fetch(apiUrl);
@@ -40,6 +47,7 @@ export default new Vuex.Store({
       const products = json.map(productFromApiData);
       context.commit('setProducts', products);
     },
+
     changeQuantity(context, { id, delta }) {
       const oldQuantity = context.getters.productQuantity(id);
       context.commit('setProductQuantity', {
@@ -47,9 +55,11 @@ export default new Vuex.Store({
         quantity: oldQuantity + delta,
       });
     },
+
     increaseQuantity(context, id) {
       context.dispatch('changeQuantity', { id, delta: 1 });
     },
+
     decreaseQuantity(context, id) {
       context.dispatch('changeQuantity', { id, delta: -1 });
     },
