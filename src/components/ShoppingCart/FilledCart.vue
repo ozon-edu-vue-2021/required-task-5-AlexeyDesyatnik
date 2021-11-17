@@ -25,11 +25,7 @@ export default {
   },
   methods: {
     checkout() {
-      const productsWithQuantities = this.productsInCart.map((product) => ({
-        ...product,
-        quantity: this.productQuantity(product.id),
-      }));
-      const json = JSON.stringify(productsWithQuantities);
+      const json = JSON.stringify(this.productsInCart);
       alert(json);
     },
   },

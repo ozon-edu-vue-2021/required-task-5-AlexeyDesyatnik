@@ -9,7 +9,7 @@
     <p>Цена: {{ product.price }} руб.</p>
 
     <div class="productQuantityControls">
-      <p>В корзине: {{ productQuantity(product.id) }} шт.</p>
+      <p>В корзине: {{ product.quantity }} шт.</p>
       <button @click="decreaseQuantity(product.id)">-1</button>
       <button @click="increaseQuantity(product.id)">+1</button>
       <button @click="removeFromCart(product.id)">Удалить</button>

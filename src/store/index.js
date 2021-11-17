@@ -21,7 +21,10 @@ export default new Vuex.Store({
       state.products.find((product) => product.id == id),
 
     productsInCart: (state, getters) =>
-      Object.keys(state.shoppingCart).map((id) => getters.product(id)),
+      Object.keys(state.shoppingCart).map((id) => ({
+        ...getters.product(id),
+        quantity: getters.productQuantity(id),
+      })),
 
     isCartEmpty: (_, getters) => getters.productsInCart?.length === 0 ?? 0,
   },
