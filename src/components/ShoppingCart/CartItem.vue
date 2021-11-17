@@ -12,6 +12,7 @@
       <p>В корзине: {{ productQuantity(product.id) }} шт.</p>
       <button @click="decreaseQuantity(product.id)">-1</button>
       <button @click="increaseQuantity(product.id)">+1</button>
+      <button @click="removeFromCart(product.id)">Удалить</button>
     </div>
   </div>
 </template>
@@ -27,7 +28,7 @@ export default {
     ...mapGetters(['productQuantity']),
   },
   methods: {
-    ...mapActions(['increaseQuantity', 'decreaseQuantity']),
+    ...mapActions(['increaseQuantity', 'decreaseQuantity', 'removeFromCart']),
   },
 };
 </script>

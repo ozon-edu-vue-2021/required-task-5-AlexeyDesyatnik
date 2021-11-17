@@ -63,5 +63,12 @@ export default new Vuex.Store({
     decreaseQuantity(context, id) {
       context.dispatch('changeQuantity', { id, delta: -1 });
     },
+
+    removeFromCart(context, id) {
+      context.commit('setProductQuantity', {
+        id,
+        quantity: 0,
+      });
+    },
   },
 });
