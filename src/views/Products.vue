@@ -1,15 +1,32 @@
 <template>
-  <product-list />
+  <div id="productList">
+    <product-card
+      v-for="product in products"
+      :key="product.id"
+      :product="product"
+    />
+  </div>
 </template>
 
 <script>
-import ProductList from '@/components/Products/ProductList.vue';
+import ProductCard from '@/components/Products/ProductCard.vue';
 
 export default {
   components: {
-    ProductList,
+    ProductCard,
+  },
+  computed: {
+    products() {
+      return this.$store.state.products;
+    },
   },
 };
 </script>
 
-<style></style>
+<style>
+#productList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+</style>
