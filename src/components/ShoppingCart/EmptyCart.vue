@@ -1,5 +1,5 @@
 <template>
-  <p>Корзина пуста!</p>
+  <h2>Корзина пуста!</h2>
 </template>
 
 <script>

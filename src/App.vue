@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Интернет-магазин</h1>
     <nav>
-      <ul id="shopNavigation">
+      <ul id="menu">
         <li>
           <router-link to="/">Каталог</router-link>
         </li>
@@ -37,12 +37,19 @@ export default {
   box-sizing: border-box;
 }
 
-#shopNavigation {
+#menu {
   list-style-type: none;
 }
 
-#shopNavigation li {
+#menu li {
   display: inline-block;
-  margin: 0px 5px;
+}
+
+#menu a {
+  padding: 10px;
+}
+
+#menu a.router-link-exact-active {
+  background-color: rgb(173, 236, 255);
 }
 </style>
